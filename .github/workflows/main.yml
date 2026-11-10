@@ -1,0 +1,19 @@
+name: EJ2
+
+on: push
+
+permissions:
+  security-events: write
+
+jobs:
+  analizar_codigo:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Bajar codigo
+        uses: actions/checkout@v7
+
+      - name: Analizar calidad del codigo
+        uses: advanced-security/python-lint-code-scanning-action@v1
+        with:
+          linter: pylint
